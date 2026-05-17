@@ -1,0 +1,9 @@
+*.txt
+*.png
+*.pdf
+*.env
+/components
+/build
+/DataSheets
+/libraries
+Env.h
