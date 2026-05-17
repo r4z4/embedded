@@ -1,0 +1,31 @@
+#include <FastLED.h>
+
+#define LED_PIN     5    // Change this to the GPIO pin you are using
+#define NUM_LEDS    31   // Total LEDs
+#define BRIGHTNESS  50   // Keep low for testing
+#define LED_TYPE    WS2812B
+#define COLOR_ORDER GRB
+
+CRGB leds[NUM_LEDS];
+
+void setup() {
+  delay(1000); // Sanity delay
+  FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+  FastLED.setBrightness(BRIGHTNESS);
+}
+
+void loop() {
+  // Test: Turn all LEDs red
+  for(int i=0; i<NUM_LEDS; i++) {
+    leds[i] = CRGB::Red;
+  }
+  FastLED.show();
+  delay(1000);
+  
+  // Test: Turn all LEDs off
+  for(int i=0; i<NUM_LEDS; i++) {
+    leds[i] = CRGB::Black;
+  }
+  FastLED.show();
+  delay(1000);
+}
